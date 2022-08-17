@@ -1,0 +1,188 @@
+<html>
+    <head>
+        <script>
+        /* NOTAS
+        !!! A grande maioria dos estudos será colocada ao fim do documento pois 
+        se um script não tem uma estrutura (html/css) definida antes dele para atuar sobre, nada acontecerá.
+
+        Client side: roda apenas na máquina do cliente.
+        Basta um arquivo .html comum com a tag <script> para codar em JS.
+        OPCIONAL: inclusão do atributo com valor na tag Script para início do JS (type="text/javascript")
+        Focado em front-end.
+        Não é igual a JAVA, que serve para back-end.
+        Pode ser inserido em tags scripts na HEAD ou BODY mesmo, como valores de outras tags ou externamente como arquivo.js.
+        Puxando arquivos externos: <script src="arquivo.js"><.script> ; Scripts externos não podem conter <script>tags em seu interior.
+        Para adicionar vários arquivos de script a uma página - use várias tags de script.
+        O indicado é usar tag Script como último elemento da tag Body pois otimiza aparição dos demais elementos.
+        Se uma instrução JavaScript não couber em uma linha, o melhor lugar para quebrá-la é depois de um operador.
+        Linguagem caso sensitiva.
+        Um nome JavaScript deve começar com:
+            Uma letra (AZ ou az)
+            Um cifrão ($)
+            Ou um sublinhado (_)
+            NUNCA com um número
+        Um nome JS aceita:
+            escritaCamelo
+            EscritaCamelo
+            escrita_sublinhada
+            NUNCA hífens
+
+        */
+
+        //IMPRIMINDO NA TELA
+        /*
+        Writing into an HTML element, using innerHTML. << mais indicado; 
+            document.getElementById("umaIdQualquer").innerHTML = valoresDesejados;
+        Writing into the HTML output using document.write(). << perigoso, evitar
+        Writing into an alert box, using window.alert().
+        Writing into the browser console, using console.log().
+        window.print() >> manda imprimir a janela na impressora.
+        */
+
+
+        console.log("Olá");
+        //será impresso no console, não na página.
+
+        document.write("<p> Olá gentein. Este comando só pode ser usado uma vez. <p>");
+        /*será impresso na própria página como texto em formatação padrão.
+        O uso de document.write() após o carregamento de um documento HTML excluirá todo o HTML existente 
+            [quando é executado novamente sobre uma tela já carregada]
+        Deve ser usado apenas para teste.
+        Aparentemente só imprime a primeira chamada mesmo com várias chamadas no script.
+        Ex: Há várias linhas de document.write() e o mesmo comando a ser carregado na ativação de um evento.
+        O que ocorre: apenas a primeira linha de document.write() é processada, o resto é ignorado; e 
+        quando o evento atualiza o conteúdo da página e o comando está envolvido, tudo é substituído pelo seu conteúdo.
+        */
+
+        //Comando document.getElementId("demo1").innerHtml...
+        //demo1 no footer
+        
+        //DECLARAÇÃO DE VARIÁVEIS
+        var nome = "Um nome";
+        var idade = 27;
+        var umaBoolean = true;
+        var concatena = nome+" "+idade;
+        var lampadaOn = "https://cdn-icons.flaticon.com/png/512/3625/premium/3625060.png?token=exp=1660243510~hmac=e1ca0e0a2854d5e09543ab700331a1cd";
+        var lampadaOff = "https://cdn-icons.flaticon.com/png/512/3471/premium/3471635.png?token=exp=1660242772~hmac=725a4cdc0bf38a84d75286d046b1270a";
+        /*Também aceita multideclaração em uma e em mais linhas quebradas.
+            let person = "John Doe", carName = "Volvo",
+                price = 200;
+
+        Você não pode declarar novamente uma variável declarada com let ou const.
+        Const é sempre imutável. Let aceita variações, mas seu conteúdo não recebe re-declarações, ou seja, só aceita "fórmulas".
+        Let: escopo LOCAL (usada somente dentro da página ou função que foi declarada).
+
+        Apesar de cifrão ser permitido em nomeação de variáveis, em jQuery ele é uma função própria, sendo que [JQuery $("p");] significa 
+        "selecionar todos os elementos p".
+        */
+        
+        //chamando var
+        //demo 4 e 5 no footer
+
+        //ARRAYS
+        var umArrayGeral = ["maçã", "pera", "uva", 10, 13, false, true];
+        //demo 6 no footer
+
+        //IF ELSE
+        //demo 7 no footer
+
+        //LOOP FOR
+        //demo 8 no footer
+
+        //LOOP FOREACH
+
+        //LOOP WHILE/DO
+
+        //SWITCH/CASE
+
+        //FUNÇÕES
+        function umaFuncaoDeclarada(parametro){
+            document.getElementById("demo9").innerHTML = ("Imprimindo valores por funções: "+parametro); //mudar!! não está funcionando
+        }
+        //chamando função
+        //execução demo9 no footer
+
+        //OBJETOS - ESTUDAR MAIS DEPOIS
+        /* Abaixo: objeto imutável de nome 'person', com atributos e valores. Estruturação de um objeto.
+        
+        const person = {
+            firstName: "John",
+            lastName : "Doe",
+            id       : 5566,
+            fullName : function() {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+
+        Aparentemente, no PHP: um objeto é uma função com subfunções e variáveis.
+        no JS: um objeto é um array declarado com chaves, e até funções podem ser adicionadas como valores dos atributos.
+        Comparando: js é um array no qual os atributos são como variáveis com valores, e subfunções também ficam em forma de variáveis.
+        
+        Criando/registrando novos objetos: .. acho 
+        variavel = new nomeObjeto();
+        */
+
+        </script>
+    </head>
+    <body>
+        
+        <p id="demo1">Conteúdo de demo1.</p>
+        
+        <!-- Alterando atributos - imagem -->
+        <button onclick="document.getElementById('myImage').src=lampadaOn">Turn on the light</button>
+        <img id="myImage" src='lampadaOn' style="width:100px">
+        <button onclick="document.getElementById('myImage').src=lampadaOff">Turn off the light</button>
+        <br>
+
+        <!-- Alterando atributos - textos -->
+        <p id="demo2">Conteúdo de demo2.</p>
+        <button type="button" onclick="document.getElementById('demo2').style.display='none'">Desaparecer</button>
+        <button type="button" onclick="document.getElementById('demo2').style.display='block'">Aparecer</button>
+        <br>
+
+        <p id="demo3">Pressione o botão abaixo para mudar meu tamanho.</p>
+        <button type="button" onclick="document.getElementById('demo3').style.fontSize='35px'">Grande</button>
+        <button type="button" onclick="document.getElementById('demo3').style.fontSize='9px'">Pequeno</button>
+
+        <p id="demo4">Conteúdo de demo4.</p>
+        <p id="demo5">Conteúdo de demo5.</p>
+        <p id="demo6">Conteúdo de demo6.</p>
+        <p id="demo7">Conteúdo de demo7.</p>
+
+        <p id="demo8_0">Conteúdo de demo8.0.</p>
+        <p id="demo8_1">Conteúdo de demo8.1.</p>
+        <p id="demo8_2">Conteúdo de demo8.2.</p>
+        <p id="demo8_3">Conteúdo de demo8.3.</p>
+        <p id="demo8_4">Conteúdo de demo8.4.</p>
+        <p id="demo8_5">Conteúdo de demo8.5.</p>
+        <p id="demo8_6">Conteúdo de demo8.6.</p>
+
+        <p id="demo9">Conteúdo de demo9.</p>
+
+
+        <footer>
+            <script>
+                document.getElementById("demo1").innerHTML = "Hello JavaScript";  //mudar!! não está funcionando
+                //pegue o elemento pelo id 'demo', altere o atributo innerHTML para "hello javascript".
+
+                document.getElementById("demo4").innerHTML = ("Chamando var: "+idade); //mudar!! não está funcionando
+                document.getElementById("demo5").innerHTML = ("Concatenando var: "+concatena); //mudar!! não está funcionando
+                document.getElementById("demo6").innerHTML = ("Imprimindo valor de array: "+umArrayGeral[2]); //mudar!! não está funcionando
+                
+                if(idade >= 18){
+                    document.getElementById("demo7").innerHTML = ("Verificando maioridade com If/Else: idade é MAIOR OU IGUAL a 18."); //mudar!! não está funcionando
+                } else {
+                    document.getElementById("demo7").innerHTML = ("Verificando maioridade com If/Else: idade é MENOR que 18."); //mudar!! não está funcionando
+                }
+
+                for(var i = 0; i < 5; i++){
+                    document.getElementById("demo8_"+i).innerHTML = ("Usando loop For para imprimir seu índice: "+i+"<br>"); //mudar!! não está funcionando
+                }
+
+                umaFuncaoDeclarada("Este é um texto inserido ao chamar a função.");
+
+
+            </script>
+        </footer>
+    </body>
+</html>
